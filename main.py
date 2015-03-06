@@ -4,11 +4,12 @@ from PIL import Image, ImageChops, ImageOps, ImageFilter
 from thermalprinter import *
 import picamera
 
-def takePicture(f_out):
+def takePicture(f_out, size=(384, 384)):
 
     camera = picamera.PiCamera()
 
-    camera.resolution = (1024, 768)
+    camera.resolution = (1024, 768) # set resolution
+    camera.vflip = True # flip camera image vertically
     camera.capture(f_out)
 
     camera.close()

@@ -8,7 +8,7 @@ def takePicture(f_out):
 
     camera = picamera.PiCamera()
 
-    camera.resolution(384, 384)
+    camera.resolution = (1024, 768)
     camera.capture(f_out)
 
     camera.close()

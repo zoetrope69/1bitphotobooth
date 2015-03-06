@@ -43,7 +43,7 @@ def process(f_in, f_out):
         .filter(ImageFilter.SHARPEN)  # sharpen
         .filter(ImageFilter.EDGE_ENHANCE)  # enhance edges
         .convert('1')  # 1 bit dither
-        .show() # show on screen
+        #.show() # show on screen
         .save(f_out) # save to file
     )
 
@@ -52,6 +52,7 @@ def printPhoto(f_in):
     printer = Adafruit_Thermal('/dev/ttyAMA0', 19200, timeout=5)
 
     printer.printImage(Image.open(f_in))
+    printer.feed(3) # eject that shit
 
 def main():
 

@@ -319,22 +319,22 @@ class Adafruit_Thermal(Serial):
 		self.writePrintMode()
 
 	def inverseOn(self):
-            self.writeBytes(29, 66, 1)
+		self.writeBytes(29, 66, 1)
 
-    def inverseOff(self):
-            self.writeBytes(29, 66, 0)
+	def inverseOff(self):
+		self.writeBytes(29, 66, 0)
 
-    def upsideDownOn(self):
-            self.writeBytes(27, 123, 1)
+	def upsideDownOn(self):
+		self.writeBytes(27, 123, 1)
 
-    def upsideDownOff(self):
-            self.writeBytes(27, 123, 0)
+	def upsideDownOff(self):
+		self.writeBytes(27, 123, 0)
 
-    def sidewaysOn(self):
-            self.writeBytes(27, 86, 1)
+	def sidewaysOn(self):
+		self.writeBytes(27, 86, 1)
 
-    def sidewaysOff(self):
-            self.writeBytes(27, 86, 0)
+	def sidewaysOff(self):
+		self.writeBytes(27, 86, 0)
 
 	def doubleHeightOn(self):
 		self.setPrintMode(self.DOUBLE_HEIGHT_MASK)

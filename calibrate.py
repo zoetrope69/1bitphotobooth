@@ -21,7 +21,7 @@
 # last good number.
 
 from __future__ import print_function
-from Adafruit_Thermal import *
+from thermalprinter import *
 
 printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 

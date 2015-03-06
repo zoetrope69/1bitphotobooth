@@ -1,6 +1,17 @@
 #!/usr/bin/env python
 
 from PIL import Image, ImageChops, ImageOps, ImageFilter
+from thermalprinter import *
+import picamera
+
+def takePicture(f_out):
+
+    camera = picamera.PiCamera()
+
+    camera.resolution(384, 384)
+    camera.capture(f_out)
+
+    camera.close()
 
 def crop(f_in, f_out, size=(80,80), pad=False):
 
@@ -21,7 +32,8 @@ def crop(f_in, f_out, size=(80,80), pad=False):
 
     thumb.save(f_out)
 
-def dither(f_in, f_out):
+def process(f_in, f_out):
+
     image = Image.open(f_in)
 
     (
@@ -34,6 +46,17 @@ def dither(f_in, f_out):
         .save(f_out) # save to file
     )
 
+def printPhoto(f_in):
 
-crop('image.jpg', 'image_cropped.jpg', size=(384, 384), pad=False)
-dither('image_cropped.jpg', 'image_dithered.jpg')
+    printer = Adafruit_Thermal('/dev/ttyAMA0', 19200, timeout=5)
+
+    printer.printImage(Image.open(f_in))
+
+def main():
+
+    takePicture('photo.jpg')
+    crop('photo.jpg', 'photo_cropped.jpg', size=(384, 384), pad=False)
+    process('photo_cropped.jpg', 'photo_processed.jpg')
+    printPhoto('photo_processed.jpg')
+
+main()

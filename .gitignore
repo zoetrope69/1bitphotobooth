@@ -52,3 +52,8 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# project specific
+photo.jpg
+photo_cropped.jpg
+photo_processed.jpg
